@@ -1,22 +1,23 @@
-exports.charCount = function() {
-    function charCount(string){	
-        let result = {};	
-        string = string.toLowerCase();	
-        for (let i = 0; i < string.length; i++){	
-          if (string[i] === ' '){	
-            continue;	
-          }	
-          if (result[string[i]] === undefined){	
-            result[string[i]] = 1;	
-          } else {	
-            result[string[i]] = result[string[i]] + 1;	
-          }	
+exports.charCount = function(string) {
+    let strObj = {};	
+    string = string.toLowerCase();	
+    for (let i = 0; i < string.length; i++){	
+        if (string[i] === ' '){	
+        continue;	
         }	
-        let objArr = Object.entries(temp).sort((a,b) => b[1] - a[1]);	
-        let result = {}	
-        for (let j = 0; j < objArr.length; j++){	
-          result[objArr[j][0]] = objArr[j][1];	
+        if (strObj[string[i]] === undefined){	
+            strObj[string[i]] = 1;	
+        } else {	
+            strObj[string[i]] = strObj[string[i]] + 1;	
         }	
-        return result;	
-      }
+    }	
+    let result = [];
+    for (key in strObj){
+        let val = strObj[key];
+        result.push([key, val]);
+    }
+    // result.sort((a,b) => b[1] - a[1]);
+    result.sort();
+    return result;	
 };
+console.log(exports.charCount("an apple a day will keep the doctor away"))
