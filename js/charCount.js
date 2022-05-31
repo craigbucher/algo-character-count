@@ -1,17 +1,22 @@
 exports.charCount = function(string) {
     let strObj = {};	
-    string = string.toLowerCase();	
-    for (let i = 0; i < string.length; i++){	
+    string = string.toLowerCase();
+    // iterate over string	
+    for (let i = 0; i < string.length; i++){
+        // if string is a space, remove it	
         if (string[i] === ' '){	
         continue;	
-        }	
+        }
+        // if letter isn't in object, initialize it with value of one	
         if (strObj[string[i]] === undefined){	
-            strObj[string[i]] = 1;	
+            strObj[string[i]] = 1;
+        // if letter already a key in object, increment it by one	
         } else {	
             strObj[string[i]] = strObj[string[i]] + 1;	
         }	
     }	
     let result = [];
+    // push keys/values into array (there's a better way to do this with one command)
     for (key in strObj){
         let val = strObj[key];
         result.push([key, val]);
